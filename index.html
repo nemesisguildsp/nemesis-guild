@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+[favicon("https://user.uploads.dev/file/2a890fbdcf8e3b6c82a1637fd572c99f.png")]
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nemesis - Os Senhores de Spartacus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #0a0a14;
+            --primary-light: #1a1a2e;
+            --gold: #d4af37;
+            --blood-red: #8b0000;
+            --silver: #c0c0c0;
+            --bronze: #cd7f32;
+            --dark-gold: #b8860b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cinzel', 'Times New Roman', serif;
+            background-color: var(--primary-dark);
+            color: var(--silver);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(139, 0, 0, 0.1) 0%, rgba(139, 0, 0, 0) 20%),
+                radial-gradient(circle at 90% 80%, rgba(139, 0, 0, 0.1) 0%, rgba(139, 0, 0, 0) 20%);
+            background-attachment: fixed;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'MedievalSharp', cursive;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            letter-spacing: 1px;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+        }
+        
+        /* Header e navegação */
+        header {
+            background: linear-gradient(to bottom, rgba(10, 10, 20, 0.9), rgba(26, 26, 46, 0.7));
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--gold);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin: 0;
+            background: linear-gradient(to right, var(--gold), var(--silver));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--gold), var(--dark-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            border: 2px solid var(--blood-red);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: var(--silver);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover:after, nav a.active:after {
+            width: 100%;
+        }
+        
+        nav a:hover, nav a.active {
+            color: var(--gold);
+        }
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: 
+                linear-gradient(rgba(10, 10, 20, 0.85), rgba(26, 26, 46, 0.85)),
+                url('https://user.uploads.dev/file/3009736dc63ac6967ecfb38eef35f2c5.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/diagmonds.png');
+            opacity: 0.2;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+            z-index: 10;
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--silver);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px var(--gold), 0 0 20px var(--gold);
+            }
+            to {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--gold), 0 0 40px var(--gold);
+            }
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: linear-gradient(to bottom, var(--gold), var(--bronze));
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            margin: 0 15px;
+            position: relative;
+            overflow: hidden;
+            font-size: 1.1rem;
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover:before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(212, 175, 55, 0.2);
+        }
+        
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 70px;
+            position: relative;
+            text-transform: uppercase;
+        }
+        
+        .section-title:after {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+        
+        .about-section {
+            background: url('https://www.transparenttextures.com/patterns/black-linen.png');
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .about-text {
+            flex: 1;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+        }
+        
+        .about-image {
+            flex: 1;
+            height: 450px;
+            background: url('https://user.uploads.dev/file/2a890fbdcf8e3b6c82a1637fd572c99f.png') center/cover;
+            border-radius: 10px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-image:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(10, 10, 20, 0.3), rgba(212, 175, 55, 0.1));
+        }
+        .offers-section {
+            background: var(--primary-light);
+            background-image: url('https://www.transparenttextures.com/patterns/diagmonds.png');
+        }
+        
+        .offers-container {
+            display: flex;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .offers-box, .requirements-box {
+            flex: 1;
+            padding: 40px 30px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            border: 1px solid var(--gold);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .offers-box:before, .requirements-box:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--gold), var(--bronze));
+        }
+        
+        .offers-box h3, .requirements-box h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+        
+        .offers-list, .requirements-list {
+            list-style: none;
+        }
+        
+        .offers-list li, .requirements-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(192, 192, 192, 0.2);
+            position: relative;
+            padding-left: 40px;
+            font-size: 1.1rem;
+        }
+        
+        .offers-list li:before, .requirements-list li:before {
+            content: "⚔️";
+            position: absolute;
+            left: 0;
+            top: 12px;
+            font-size: 1.2rem;
+        }
+        .leaders-section {
+            background: url('https://user.uploads.dev/file/f21babc451f905a9b80ca582a37414d9.jpg') center/cover fixed;
+            position: relative;
+        }
+        
+        .leaders-section:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 20, 0.9);
+        }
+        
+        .leaders-content {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .leaders-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .leader-pair {
+            display: flex;
+            gap: 40px;
+            width: 100%;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .leader-card {
+            width: 45%;
+            max-width: 350px;
+            background: rgba(26, 26, 46, 0.9);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid var(--gold);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .leader-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+        }
+        
+        .leader-image {
+            height: 250px;
+            background: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .leader-image:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(10, 10, 20, 0.7), rgba(212, 175, 55, 0.2));
+        }
+        
+        .leader-info {
+            padding: 25px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .leader-info h4 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+        
+        .leader-info p {
+            font-style: italic;
+            color: var(--silver);
+            margin-bottom: 0;
+            font-size: 1.2rem;
+        }
+        
+        .leader-title {
+            color: var(--dark-gold);
+            font-weight: bold;
+            margin-top: 5px;
+            display: block;
+        }
+        .contact-section {
+            text-align: center;
+            background: var(--primary-dark);
+            background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
+        }
+        
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: rgba(26, 26, 46, 0.7);
+            border-radius: 10px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+        }
+        
+        .contact-options {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-option {
+            width: 250px;
+            padding: 30px 25px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            border: 1px solid var(--gold);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-option:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--gold), var(--bronze));
+        }
+        
+        .contact-option:hover {
+            transform: translateY(-10px);
+            background: rgba(26, 26, 46, 0.9);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+        }
+        
+        .contact-icon {
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        .contact-option h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--gold);
+            color: var(--primary-dark);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-btn:hover {
+            background: #e5c158;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+        footer {
+            background: var(--primary-light);
+            text-align: center;
+            padding: 40px 0;
+            border-top: 2px solid var(--gold);
+            background-image: url('https://www.transparenttextures.com/patterns/diagmonds.png');
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Efeitos de texto */
+        .highlight {
+            color: var(--gold);
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 25px;
+            border-left: 4px solid var(--gold);
+            background: rgba(0, 0, 0, 0.3);
+            margin: 25px 0;
+            border-radius: 0 10px 10px 0;
+            position: relative;
+            font-size: 1.2rem;
+        }
+        
+        .quote:before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-size: 5rem;
+            color: rgba(212, 175, 55, 0.3);
+            font-family: serif;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .about-content, .offers-container {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                height: 400px;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .leader-pair {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .leader-card {
+                width: 90%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.6rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .leader-card {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .contact-options {
+                gap: 30px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=MedievalSharp&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-skull"></i>
+                    </div>
+                    <h1>Nemesis</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home" class="active">Início</a></li>
+                        <li><a href="#about">A Guilda</a></li>
+                        <li><a href="#offers">Ofertas</a></li>
+                        <li><a href="#leaders">Líderes</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>NEMESIS</h1>
+            <h2>Os Senhores de Spartacus</h2>
+            <p>No coração sangrento do coliseu de Spartacus OTServ, onde a sobrevivência é esculpida na lâmina de uma espada e a glória é conquistada a cada respiração, uma guilda ergue-se acima de todas as outras.</p>
+            <div>
+                <a href="#contact" class="btn">Junte-se a Nós</a>
+                <a href="#about" class="btn btn-outline">Saiba Mais</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre a Guilda -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title">A Guilda</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Formada por veteranos endurecidos pela guerra e estrategistas implacáveis, <span class="highlight">Nemesis não é apenas uma guilda — é uma instituição</span>. Seu brasão é reconhecido (e temido) em todos os cantos do servidor.</p>
+                    
+                    <p>Eles não apenas dominam os campos de batalha PvP, mas também controlam com mão de ferro as melhores rotas de Icot, os bosses mais desafiadores e os territórios cruciais do mapa.</p>
+                    
+                    <p>Liderados por <span class="highlight">Gzn</span> e <span class="highlight">Lipe</span>, comandantes conhecidos por sua frieza e genialidade tática, a guilda opera com uma disciplina quase militar. Cada membro tem seu papel — dos Knights, que servem na linha de frente, aos paladinos, que lideram expedições, até o seleto conselho dos Druids e Sorcerers, que traçam os rumos místicos da guilda.</p>
+                    
+                    <div class="quote">
+                        <p>Para os novatos, o nome Nemesis é um aviso. Para os aliados, uma bênção. E para os inimigos, uma sentença de morte.</p>
+                    </div>
+                    
+                    <p>No mundo brutal de Spartacus OTServ, onde honra e traição caminham lado a lado, a Nemesis permanece invicta — como campeões eternos e mestres incontestáveis do servidor.</p>
+                </div>
+                <div class="about-image"></div>
+            </div>
+        </div>
+    </section>
+	
+    <section class="offers-section" id="offers">
+        <div class="container">
+            <h2 class="section-title">O Que Oferecemos e Buscamos</h2>
+            <div class="offers-container">
+                <div class="offers-box">
+                    <h3>O Que Oferecemos</h3>
+                    <ul class="offers-list">
+                        <li>Apoio com desconto 50% nos itens para evolução rápida</li>
+                        <li>Eventos internos, sorteios e desafios mensais</li>
+                        <li>Bot próprio com as melhores funções para uso</li>
+                        <li>Estratégias avançadas de PvP e PvE</li>
+                        <li>Domínio sobre as melhores áreas de caça</li>
+                        <li>Proteção contra outras guildas</li>
+                        <li>Comunidade ativa e unida</li>
+                    </ul>
+                </div>
+                
+                <div class="requirements-box">
+                    <h3>O Que Buscamos</h3>
+                    <ul class="requirements-list">
+                        <li>Jogadores ativos e comprometidos</li>
+                        <li>Espírito de equipe e respeito mútuo</li>
+                        <li>Vontade de crescer junto com a guild</li>
+                        <li>Disponibilidade para participar de atividades em grupo</li>
+                        <li>Experiência em PvP (desejável)</li>
+                        <li>Lealdade inabalável à guilda</li>
+                        <li>Disposição para aprender e ensinar</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto;">"Somos uma guild formada por jogadores ativos, apaixonados por batalhas épicas. Aqui, o respeito e a união falam mais alto. Ajudamos nossos membros a evoluir, compartilhar conhecimento e conquistar seus objetivos, seja você um iniciante ou um veterano sedento por um PvP insano."</p>
+                <a href="#contact" class="btn" style="margin-top: 30px;">Quero Participar!</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="leaders-section" id="leaders">
+        <div class="container">
+            <h2 class="section-title">Liderança da Guilda</h2>
+            <div class="leaders-content">
+                <h3 style="text-align: center; margin-bottom: 50px; color: var(--gold); font-size: 2.5rem; text-transform: uppercase;">Líderes</h3>
+                
+                <div class="leader-pair">
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="leader-info">
+                            <h4>Gzn Unstoppable</h4>
+                            <span class="leader-title">Comandante Supremo</span>
+                        </div>
+                    </div>
+                    
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="leader-info">
+                            <h4>Lipe</h4>
+                            <span class="leader-title">Estrategista-chefe</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="leader-pair">
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="leader-info">
+                            <h4>Pedro</h4>
+                            <span class="leader-title">General de Batalha</span>
+                        </div>
+                    </div>
+                    
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="leader-info">
+                            <h4>Lucas</h4>
+                            <span class="leader-title">Mestre de Recursos</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 style="text-align: center; margin: 70px 0 50px; color: var(--gold); font-size: 2.5rem; text-transform: uppercase;">Vice-Líderes</h3>
+                
+                <div class="leader-pair">
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <i class="fas fa-chess-knight"></i>
+                        </div>
+                        <div class="leader-info">
+                            <h4>Jhoni</h4>
+                            <span class="leader-title">Capitão da Guarda</span>
+                        </div>
+                    </div>
+                    
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <i class="fas fa-chess-knight"></i>
+                        </div>
+                        <div class="leader-info">
+                            <h4>Rafael</h4>
+                            <span class="leader-title">Comandante de Elite</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="leader-pair">
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <i class="fas fa-chess-knight"></i>
+                        </div>
+                        <div class="leader-info">
+                            <h4>Nicole</h4>
+                            <span class="leader-title">Estrategista de Combate</span>
+                        </div>
+                    </div>
+                    
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <i class="fas fa-chess-knight"></i>
+                        </div>
+                        <div class="leader-info">
+                            <h4>Golira Gold</h4>
+                            <span class="leader-title">Mestre de Tesouros</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Junte-se a Nós</h2>
+            <div class="contact-container">
+                <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto 20px;">Se você está cansado de jogar sozinho e quer fazer parte de algo maior, junte-se a nós. Entre em contato através dos nossos canais oficiais:</p>
+                
+                <div class="contact-options">
+                    <div class="contact-option">
+                        <div class="contact-icon">
+                            <i class="fab fa-discord"></i>
+                        </div>
+                        <h3>Discord</h3>
+                        <p>Participe da nossa comunidade e fique por dentro de todas as estratégias e eventos</p>
+                        <a href="https://discord.gg/DM8m6MgFsB" target="_blank" class="contact-btn">Entrar no Discord</a>
+                    </div>
+                    
+                    <div class="contact-option">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3>WhatsApp</h3>
+                        <p>Fale diretamente com os líderes e tire todas as suas dúvidas</p>
+                        <a href="https://wa.me/5581985849106?text=Ola%20guerreiro%2C%20Gostaria%20de%20participar%20da%20Guild" target="_blank" class="contact-btn">Conversar no WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p style="font-size: 1.8rem; margin-bottom: 15px;">Nemesis - Os Senhores de Spartacus</p>
+            <p style="font-size: 1.2rem; letter-spacing: 2px;">Domínio, Glória e Poder - Desde o início dos tempos</p>
+            
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        const heroTitle = document.querySelector('.hero h1');
+        if (heroTitle) {
+            const originalText = heroTitle.textContent;
+            heroTitle.textContent = '';
+            
+            let i = 0;
+            const typeWriter = () => {
+                if (i < originalText.length) {
+                    heroTitle.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            };
+            
+            setTimeout(typeWriter, 1000);
+        }
+    </script>
+</body>
+</html>
