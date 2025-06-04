@@ -1113,8 +1113,6 @@
             </div>
         </div>
     </section>
-
-  <!-- Nova Seção de Galeria -->
 <section class="gallery-section" id="gallery">
     <div class="container">
         <h2 class="section-title">Galeria</h2>
@@ -1237,20 +1235,17 @@
             setTimeout(typeWriter, 1000);
         }
     </script>
-  <!-- Modal Lightbox -->
 <div id="lightbox" class="lightbox">
     <span class="close-btn">&times;</span>
     <img class="lightbox-content" id="lightbox-img">
     <div class="caption"></div>
 </div>
   <script>
-    // Lightbox functionality
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const galleryItems = document.querySelectorAll('.gallery-item img');
     const closeBtn = document.querySelector('.close-btn');
     
-    // Abre o lightbox ao clicar em qualquer imagem da galeria
     galleryItems.forEach(item => {
         item.addEventListener('click', function() {
             lightbox.style.display = 'block';
@@ -1259,13 +1254,11 @@
         });
     });
     
-    // Fecha o lightbox
     closeBtn.addEventListener('click', function() {
         lightbox.style.display = 'none';
         document.body.style.overflow = 'auto'; // Restaura scroll
     });
     
-    // Fecha ao clicar fora da imagem
     lightbox.addEventListener('click', function(e) {
         if (e.target === lightbox) {
             lightbox.style.display = 'none';
