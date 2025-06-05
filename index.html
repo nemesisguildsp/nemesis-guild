@@ -1113,6 +1113,8 @@
             </div>
         </div>
     </section>
+
+  <!-- Nova Seção de Galeria -->
 <section class="gallery-section" id="gallery">
     <div class="container">
         <h2 class="section-title">Galeria</h2>
@@ -1130,7 +1132,7 @@
                 <img src="https://user.uploads.dev/file/86216486870dc6e0fd3bb58d2a1743dd.webp">
             </div>
             <div class="gallery-item">
-                <img src="https://user.uploads.dev/file/ddb66283ca2048b5e62c56f1f46337f0.jpg">
+                <img src="https://user.uploads.dev/file/4a74461e349a93008cb8fb31c98c2a9e.webp">
             </div>
             <div class="gallery-item">
                 <img src="https://user.uploads.dev/file/48c4453001857b826a8db7add7a26eaf.jpg">
@@ -1161,14 +1163,14 @@
                         </div>
                         <h3>WhatsApp</h3>
                         <p>Fale diretamente com os líderes e tire todas as suas dúvidas</p>
-                        <a href="https://wa.me/5581985849106?text=Ola%20Lipe%2C%20Gostaria%20de%20participar%20da%20Guild" target="_blank" class="contact-btn">Conversar no WhatsApp</a>
+                        <a href="https://wa.me/5581985849106?text=Ola%20guerreiro%2C%20Gostaria%20de%20participar%20da%20Guild" target="_blank" class="contact-btn">Conversar no WhatsApp</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <p style="font-size: 1.8rem; margin-bottom: 15px;">Nemesis - Os Senhores de Spartacus</p>
@@ -1235,17 +1237,20 @@
             setTimeout(typeWriter, 1000);
         }
     </script>
+  <!-- Modal Lightbox -->
 <div id="lightbox" class="lightbox">
     <span class="close-btn">&times;</span>
     <img class="lightbox-content" id="lightbox-img">
     <div class="caption"></div>
 </div>
   <script>
+    // Lightbox functionality
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const galleryItems = document.querySelectorAll('.gallery-item img');
     const closeBtn = document.querySelector('.close-btn');
     
+    // Abre o lightbox ao clicar em qualquer imagem da galeria
     galleryItems.forEach(item => {
         item.addEventListener('click', function() {
             lightbox.style.display = 'block';
@@ -1254,11 +1259,13 @@
         });
     });
     
+    // Fecha o lightbox
     closeBtn.addEventListener('click', function() {
         lightbox.style.display = 'none';
         document.body.style.overflow = 'auto'; // Restaura scroll
     });
     
+    // Fecha ao clicar fora da imagem
     lightbox.addEventListener('click', function(e) {
         if (e.target === lightbox) {
             lightbox.style.display = 'none';
@@ -1266,6 +1273,7 @@
         }
     });
     
+    // Fecha com tecla ESC
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && lightbox.style.display === 'block') {
             lightbox.style.display = 'none';
@@ -1273,5 +1281,17 @@
         }
     });
 </script>
+  <div style="text-align: center; font-size: 12px; color: #888; margin-top: 30px;">
+  <span>POWERED BY</span><br>
+  <a href="https://t.me/rafaelodessa" target="_blank" class="colorful-name">RAFAEL</a>
+</div>
+
+
+<style>
+  body {
+    cursor: url('https://user.uploads.dev/file/c097ec42384660f191ae5c1ce63dc191.cur'), auto;
+  }
+</style>
+
 </body>
 </html>
